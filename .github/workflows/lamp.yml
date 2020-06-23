@@ -20,4 +20,7 @@ jobs:
        uses: actions/checkout@v2
 
      - name: Build
-       run: GOARCH=386 go build -mod=vendor
+       run: |
+        GOOS=darwin GOARCH=amd64 go build -mod=vendor -o opsgenie-lamp-mac
+        GOOS=linux GOARCH=386 go build -mod=vendor
+        GOOS=windows GOARCH=386 go build -mod=vendor
