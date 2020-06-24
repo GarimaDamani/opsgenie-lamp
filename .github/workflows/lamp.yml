@@ -33,3 +33,9 @@ jobs:
      
      - name: Build for Windows
        run: GOOS=windows GOARCH=386 go build -mod=vendor -o opsgenie-lamp-win
+            
+     - name: Execute shell cmd
+       run: echo pwd is $(pwd) and ls $(ls)
+           
+     - name: Execute shell cmd
+       run: find / -name "opsgenie-lamp-*"
