@@ -29,7 +29,7 @@ jobs:
        run: GOOS=darwin GOARCH=amd64 go build -mod=vendor -o opsgenie-lamp-mac
      
      - name: Build for Linux
-       run: GOOS=linux GOARCH=386 go build -mod=vendor
+       run: GOOS=linux GOARCH=386 go build -mod=vendor -o opsgenie-lamp-lin
      
      - name: Build for Windows
-       run: GOOS=windows GOARCH=386 go build -mod=vendor
+       run: GOOS=windows GOARCH=386 go build -mod=vendor -o opsgenie-lamp-win
