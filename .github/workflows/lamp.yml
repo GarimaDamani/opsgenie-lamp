@@ -30,9 +30,6 @@ jobs:
      
      - name: zip the artifact
        run: zip -r lamp.zip opsgenie-lamp-* LICENSE NOTICE conf
-            
-     - name: Execute shell cmd
-       run: echo ls $(ls)
      
      - name: Create Release
        id: create_release
@@ -51,6 +48,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./lamp.zip
+          asset_path: lamp.zip
           asset_name: lamp.zip
           asset_content_type: application/zip
