@@ -18,12 +18,6 @@ jobs:
 
      - name: Check out code into the Go module directory
        uses: actions/checkout@v2
-     
-     - name: Execute shell cmd
-       run: echo pwd is $(pwd) and ls $(ls)
-       
-     - name: version
-       run: GOOS=darwin GOARCH=amd64 go build -mod=vendor -v .
 
      - name: Build for MacOS
        run: GOOS=darwin GOARCH=amd64 go build -mod=vendor -o opsgenie-lamp-mac
@@ -33,9 +27,9 @@ jobs:
      
      - name: Build for Windows
        run: GOOS=windows GOARCH=386 go build -mod=vendor -o opsgenie-lamp-win
+     
+     - name: zip the artifact
+       run: zip -r lamp.zip opsgenie-lamp-* LICENSE NOTICE conf
             
      - name: Execute shell cmd
-       run: echo pwd is $(pwd) and ls $(ls)
-           
-     - name: Execute shell cmd
-       run: find / -name "opsgenie-lamp-*"
+       run: echo ls $(ls -ltr)
