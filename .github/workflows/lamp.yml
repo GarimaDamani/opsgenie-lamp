@@ -21,6 +21,9 @@ jobs:
      
      - name: Execute shell cmd
        run: echo pwd is $(pwd) and ls $(ls)
+       
+     - name: version
+       run: GOOS=darwin GOARCH=amd64 go build -mod=vendor -v .
 
      - name: Build for MacOS
        run: GOOS=darwin GOARCH=amd64 go build -mod=vendor -o opsgenie-lamp-mac
