@@ -32,4 +32,25 @@ jobs:
        run: zip -r lamp.zip opsgenie-lamp-* LICENSE NOTICE conf
             
      - name: Execute shell cmd
-       run: echo ls $(ls -ltr)
+       run: echo ls $(ls)
+     
+     - name: Create Release
+       id: create_release
+       uses: actions/create-release@v1
+       env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+          
+     - name: Upload Release Asset
+       uses: actions/upload-release-asset@v1
+       env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./lamp.zip
+          asset_name: lamp.zip
+          asset_content_type: application/zip
