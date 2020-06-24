@@ -20,7 +20,7 @@ jobs:
        uses: actions/checkout@v2
      
      - name: Execute shell cmd
-       run: echo pwd is $(pwd)
+       run: echo pwd is $(pwd) and ls $(ls)
 
      - name: Build for MacOS
        run: GOOS=darwin GOARCH=amd64 go build -mod=vendor -o opsgenie-lamp-mac
